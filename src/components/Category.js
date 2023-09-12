@@ -1,5 +1,3 @@
-// import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
 import {FaPizzaSlice, FaHamburger} from 'react-icons/fa'
 import {GiNoodles, GiChopsticks, GiMeat} from 'react-icons/gi'
 import {NavLink, useLocation} from 'react-router-dom';
