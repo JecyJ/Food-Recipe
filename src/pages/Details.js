@@ -33,7 +33,7 @@ const Details = () => {
                     <img src={details.image} alt='/' width={1000} height={1000} />
                 </div>
             </div>
-            <div className="md:col-span-7">
+            <div className="md:col-span-7 space-y-3">
                 <div className="space-x-3">
                     <button 
                         onClick={() => setActive('instructions')}
@@ -50,8 +50,8 @@ const Details = () => {
                 </div>
                 {active === 'instructions' && (
                     <div>
-                    <h2 dangerouslySetInnerHTML={{__html: details.summary}} className="text-lg"></h2>
-                    <h2 dangerouslySetInnerHTML={{__html: details.instructions}} className="text-lg"></h2>
+                    <h2 dangerouslySetInnerHTML={{__html: details.summary}}></h2>
+                    <h2 dangerouslySetInnerHTML={{__html: details.instructions}}></h2>
                     </div>)
                 }
                 {active === 'ingredients' && (

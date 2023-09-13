@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -22,7 +23,12 @@ const SearchedMeal = () => {
   }, [params.search]);
 
   return (
-    <section className="w-full h-full max-w-[380px] sm:max-w-[650px] md:max-w-[1100px] m-auto space-y-3 mt-4">
+    <motion.section 
+      initial={{opacity: 0, y:0}}
+      animate={{opacity: 1, y:20, transition:{duration: 1.3}}}
+      exit={{opacity: 0}}
+      className="w-full h-full max-w-[380px] sm:max-w-[650px] md:max-w-[1100px] m-auto space-y-3 mt-4"
+    >
       <h1 className="font-semibold text-xl text-center">{params.name}</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 justify-center">
         {searchedCuisine.map((results) => (
@@ -37,7 +43,7 @@ const SearchedMeal = () => {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }
 
