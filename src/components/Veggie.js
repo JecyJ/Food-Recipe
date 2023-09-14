@@ -12,20 +12,24 @@ const Veggie = () => {
 
   useEffect(() => {
     async function fetchRandomRecipe() {
-      const check = localStorage.getItem('veggie');
-      if(check) {
-        setVeggie(JSON.parse(check));
-      } else {
-        try {
-          const apiKey = process.env.REACT_APP_API_KEY;
-          const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=20&tags=vegetarian`);
-          const data = await response.json();
-          localStorage.setItem('veggie', JSON.stringify(data.recipes));
-          setVeggie(data.recipes);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      }      
+
+      try {
+        const apiKey = process.env.REACT_APP_API_KEY;
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=30&tags=vegetarian`);
+        const data = await response.json();
+        // localStorage.setItem('veggie', JSON.stringify(data.recipes));
+        setVeggie(data.recipes);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+
+
+      // const check = localStorage.getItem('veggie');
+      // if(check) {
+      //   setVeggie(JSON.parse(check));
+      // } else {
+        
+      // }      
     }      
 
     fetchRandomRecipe();

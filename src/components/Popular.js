@@ -13,21 +13,23 @@ const Popular = () => {
   useEffect(() => {
     async function fetchRandomRecipe() {
 
-      const check = localStorage.getItem('recipe');
+      try {
+        const apiKey = process.env.REACT_APP_API_KEY;
+        const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=30`);
+        const data = await response.json();
+        // localStorage.setItem('recipe', JSON.stringify(data.recipes));
+        setRecipe(data.recipes);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
 
-      if(check) {
-        setRecipe(JSON.parse(check));
-      } else {
-        try {
-          const apiKey = process.env.REACT_APP_API_KEY;
-          const response = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=20`);
-          const data = await response.json();
-          localStorage.setItem('recipe', JSON.stringify(data.recipes));
-          setRecipe(data.recipes);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      }    
+      // const check = localStorage.getItem('recipe');
+
+      // if(check) {
+      //   setRecipe(JSON.parse(check));
+      // } else {
+        
+      // }    
     }      
 
     fetchRandomRecipe();
